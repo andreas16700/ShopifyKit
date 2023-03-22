@@ -13,6 +13,28 @@ public struct SHLocationsResponse:Codable {
 
 // MARK: - Location
 public struct SHLocation:Codable {
+	public init(id: Int, name: String, address1: String? = nil, address2: String? = nil, city: String? = nil, zip: String? = nil, province: String? = nil, country: String, phone: String? = nil, createdAt: String, updatedAt: String, countryCode: String, countryName: String, provinceCode: String? = nil, legacy: Bool, active: Bool, adminGraphqlAPIID: String, localizedCountryName: String, localizedProvinceName: String? = nil) {
+		self.id = id
+		self.name = name
+		self.address1 = address1
+		self.address2 = address2
+		self.city = city
+		self.zip = zip
+		self.province = province
+		self.country = country
+		self.phone = phone
+		self.createdAt = createdAt
+		self.updatedAt = updatedAt
+		self.countryCode = countryCode
+		self.countryName = countryName
+		self.provinceCode = provinceCode
+		self.legacy = legacy
+		self.active = active
+		self.adminGraphqlAPIID = adminGraphqlAPIID
+		self.localizedCountryName = localizedCountryName
+		self.localizedProvinceName = localizedProvinceName
+	}
+	
     public let id: Int
 	public let name: String
 	public let address1: String?
