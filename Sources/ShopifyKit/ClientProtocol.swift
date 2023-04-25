@@ -11,7 +11,7 @@ public protocol ShopifyClientProtocol{
 	//MARK: Variant
 	func deleteVariant(ofProductID productID: Int, variantID: Int)async->Bool
 	func updateVariant(with update: SHVariantUpdate)async -> SHVariant?
-	func updateVariants(with updates: [SHVariantUpdate])async -> SHVariant?
+	func updateVariants(with updates: [SHVariantUpdate])async -> [SHVariant]?
 	func createNewVariant(variant: SHVariantUpdate, for productID: Int)async ->SHVariant?
 	//MARK: Product
 	func deleteProduct(id: Int)async -> Bool
