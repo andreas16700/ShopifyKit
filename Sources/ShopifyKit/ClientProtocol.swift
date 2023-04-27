@@ -23,7 +23,7 @@ public protocol ShopifyClientProtocol{
 	func getIDOfProduct(withHandle handle: String)async -> Int?
 	//MARK: Inventory
 	func updateInventory(current: InventoryLevel, update: SHInventorySet)async->InventoryLevel?
-	func updateInventories(updates: [(InventoryLevel,SHInventorySet)])async->[InventoryLevel]?
+	func updateInventories(updates: [SHInventorySet])async->[InventoryLevel]?
 	func getInventory(of invItemID: Int)async ->InventoryLevel?
 	func getInventories(of invItemIDs: [Int])async ->[InventoryLevel]?
 	func getAllInventories()async -> [InventoryLevel]?
