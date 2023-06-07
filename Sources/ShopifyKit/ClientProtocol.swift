@@ -8,9 +8,11 @@
 import Foundation
 
 public struct ShopifyError: Error{
+	public init(response: String?) {
+		self.response = response
+	}
 	let response: String?
 }
-
 public protocol ShopifyClientProtocol{
 	//MARK: Variant
 	func deleteVariant(ofProductID productID: Int, variantID: Int)async->Result<Bool,ShopifyError>
