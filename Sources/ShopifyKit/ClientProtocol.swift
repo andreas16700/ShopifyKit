@@ -15,13 +15,13 @@ public struct ShopifyError: Error{
 }
 public protocol ShopifyClientProtocol{
 	//MARK: Variant
-	func deleteVariant(ofProductID productID: Int, variantID: Int)async->Result<Bool,ShopifyError>
+	func deleteVariant(ofProductID productID: Int, variantID: Int)async->Result<Void,ShopifyError>
 	func updateVariant(with update: SHVariantUpdate)async -> Result<SHVariant,ShopifyError>
 	func updateVariants(with updates: [SHVariantUpdate])async -> Result<[SHVariant],ShopifyError>
 	func createNewVariant(variant: SHVariantUpdate, for productID: Int)async ->Result<SHVariant,ShopifyError>
 	func createNewViariants(variants: [SHVariantUpdate], for productID: Int)async -> Result<[SHVariant],ShopifyError>
 	//MARK: Product
-	func deleteProduct(id: Int)async -> Result<Bool,ShopifyError>
+	func deleteProduct(id: Int)async -> Result<Void,ShopifyError>
 	func updateProduct(with update: SHProductUpdate)async ->Result<SHProduct,ShopifyError>
 	func createNewProduct(new: SHProduct)async->Result<SHProduct,ShopifyError>
 	func getAllProducts()async->Result<[SHProduct],ShopifyError>
