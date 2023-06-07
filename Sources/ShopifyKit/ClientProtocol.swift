@@ -34,6 +34,6 @@ public protocol ShopifyClientProtocol{
 	func getInventory(of invItemID: Int)async ->Result<InventoryLevel,ShopifyError>
 	func getInventories(of invItemIDs: [Int])async ->[Result<InventoryLevel,ShopifyError>]
 	func getAllInventories()async -> Result<[InventoryLevel],ShopifyError>
-	func getAllInventories(of locationID: Int)async ->[Result<InventoryLevel,ShopifyError>]
+	func getAllInventories(of locationID: Int)async ->Result<[InventoryLevel],ShopifyError>
 	func getAllLocations()async ->Result<[SHLocation],ShopifyError>
 }
