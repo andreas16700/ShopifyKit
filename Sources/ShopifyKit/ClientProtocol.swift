@@ -25,9 +25,9 @@ public protocol ShopifyClientProtocol{
 	func updateProduct(with update: SHProductUpdate)async ->Result<SHProduct,ShopifyError>
 	func createNewProduct(new: SHProduct)async->Result<SHProduct,ShopifyError>
 	func getAllProducts()async->Result<[SHProduct],ShopifyError>
-	func getProduct(withHandle handle: String)async -> Result<SHProduct,ShopifyError>
+	func getProduct(withHandle handle: String)async -> Result<SHProduct?,ShopifyError>
 	func getProduct(withID id: Int)async -> Result<SHProduct,ShopifyError>
-	func getIDOfProduct(withHandle handle: String)async -> Result<Int,ShopifyError>
+	func getIDOfProduct(withHandle handle: String)async -> Result<Int?,ShopifyError>
 	//MARK: Inventory
 	func updateInventory(update: SHInventorySet)async->Result<InventoryLevel,ShopifyError>
 	func updateInventories(updates: [SHInventorySet])async->[Result<InventoryLevel,ShopifyError>]
