@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ShopifyError: Error{
+public struct ShopifyError: Error, Codable{
 	public init(response: String?) {
 		self.response = response
 	}
