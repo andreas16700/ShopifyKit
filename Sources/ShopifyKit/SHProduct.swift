@@ -51,7 +51,7 @@ public struct SHImageWrapper: Codable{
 // MARK: - SHProduct
 public struct SHProduct: Codable, Hashable {
 	public static let defaultVariant:SHVariant = .init(title: "an item", sku: "anItem")
-	public init(id: Int? = nil, title: String, bodyHTML: String? = nil, vendor: String = "", productType: String = "", createdAt: String? = nil, handle: String, updatedAt: String? = nil, publishedAt: String? = nil, templateSuffix: String? = nil, publishedScope: String = "", tags: String = "", adminGraphqlAPIID: String? = nil, variants: [SHVariant] = [Self.defaultVariant], options: [SHOption]? = nil, images: [SHImage]? = nil, image: SHImage? = nil) {
+    public init(id: Int? = nil, title: String, bodyHTML: String? = nil, vendor: String = "", productType: String = "", createdAt: String? = nil, handle: String, updatedAt: String? = nil, publishedAt: String? = nil, templateSuffix: String? = nil, publishedScope: String = "", status: Status = .active, tags: String = "", adminGraphqlAPIID: String? = nil, variants: [SHVariant] = [Self.defaultVariant], options: [SHOption]? = nil, images: [SHImage]? = nil, image: SHImage? = nil) {
 		
 		self.id = id
 		self.title = title
@@ -64,6 +64,7 @@ public struct SHProduct: Codable, Hashable {
 		self.publishedAt = publishedAt
 		self.templateSuffix = templateSuffix
 		self.publishedScope = publishedScope
+        self.status = status
 		self.tags = tags
 		self.adminGraphqlAPIID = adminGraphqlAPIID
 		self.variants = variants
@@ -72,11 +73,11 @@ public struct SHProduct: Codable, Hashable {
 		self.image = image
 	}
 	
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-		hasher.combine(title)
-		hasher.combine(handle)
-    }
+//    public func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//		hasher.combine(title)
+//		hasher.combine(handle)
+//    }
 
     public static func == (lhs: SHProduct, rhs: SHProduct) -> Bool {
         return lhs.id == rhs.id
@@ -90,13 +91,19 @@ public struct SHProduct: Codable, Hashable {
 	public var updatedAt, publishedAt: String?
 	public let templateSuffix: String?
 	public var publishedScope, tags: String
+    public var status: Status
 	public let adminGraphqlAPIID: String?
 	public var variants: [SHVariant]
 	public var options: [SHOption]?
 	public var images: [SHImage]?
 	public var image: SHImage?
 
-	
+	public enum Status: String, Codable, Hashable {
+        case active = "active"
+        case archived = "archived"
+        case draft = "draft"
+    }
+    
 	public enum CodingKeys: String, CodingKey {
         case id, title
         case bodyHTML = "body_html"
@@ -108,6 +115,7 @@ public struct SHProduct: Codable, Hashable {
         case publishedAt = "published_at"
         case templateSuffix = "template_suffix"
         case publishedScope = "published_scope"
+        case status
         case tags
         case adminGraphqlAPIID = "admin_graphql_api_id"
         case variants, options, images, image

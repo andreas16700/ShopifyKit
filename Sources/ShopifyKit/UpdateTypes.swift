@@ -75,12 +75,13 @@ public struct SHVariantUpdate: Codable, SHVariantKind, Hashable{
 }
 
 public struct SHProductUpdate: Codable, Hashable{
-	public init(id: Int, title: String? = nil, published: Bool? = nil, body_html: String? = nil, tags: String? = nil, vendor: String? = nil, variants: [SHVariantUpdate]? = nil, options: [SHOption]? = nil, product_type: String? = nil, image: SHImage? = nil, images: [SHImage]? = nil) {
+    public init(id: Int, title: String? = nil, published: Bool? = nil, body_html: String? = nil, tags: String? = nil, status: SHProduct.Status? = nil, vendor: String? = nil, variants: [SHVariantUpdate]? = nil, options: [SHOption]? = nil, product_type: String? = nil, image: SHImage? = nil, images: [SHImage]? = nil) {
 		self.id = id
 		self.title = title
 		self.published = published
 		self.body_html = body_html
 		self.tags = tags
+        self.status = status
 		self.vendor = vendor
 		self.variants = variants
 		self.options = options
@@ -93,6 +94,7 @@ public struct SHProductUpdate: Codable, Hashable{
 	public let title: String?
 	public let published: Bool?
 	public let body_html: String?
+    public let status: SHProduct.Status?
 	public let tags: String?
 	public let vendor: String?
 	public let variants: [SHVariantUpdate]?
@@ -116,6 +118,9 @@ public struct SHProductUpdate: Codable, Hashable{
         }
         if let type = product_type{
             s+="New type: \(type)\n"
+        }
+        if let status = status{
+            s+="New status: \(status)\n"
         }
         if let published = published{
             s+="product will be published: \(published ? "yes" : "no")\n"
